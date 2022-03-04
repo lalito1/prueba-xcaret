@@ -22,7 +22,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 //Definir un domionio(s) para recibir las peticiones
-const whiteList =[process.env.FRONTEND_URL,'localhost:2000'];
+const whiteList =[process.env.FRONTEND_URL];
 const corsOptions = {
     origin:(origin,callback) =>{
         console.log(origin);
@@ -36,7 +36,7 @@ const corsOptions = {
     }
 }
 //habilitar cors
-app.use(cors());
+app.use(cors(corsOptions));
 //rutas de la app
 app.use('/',routes());
 //puerto
